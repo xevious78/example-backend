@@ -24,7 +24,7 @@ _This server uses [Node](https://nodejs.org/) as the runtime and [Fastify](https
 
 _We recommend using Glitch to quickly spin up a new instance of your server for free._
 
-1. First, click on this button to open the project in Glitch and start the server. <br /> _It may take a few minutes to start._
+1. First, click on this button to open the project in Glitch and start the server. <br /> _It may take a moment to start._
 
    [![Remix With Glitch](https://cdn.glitch.com/2703baf2-b643-4da7-ab91-7ee2a2d00b5b%2Fremix-button-v2.svg?v=1622676640618)](https://glitch.com/edit/#!/import/github/xevious78/example-backend)
 
@@ -55,7 +55,7 @@ _We recommend using Glitch to quickly spin up a new instance of your server for 
 
 5. Execute the following script on a terminal window:
    ```sh
-   npm run start
+   npm start
    ```
 
 # 🤖 Capabilities
