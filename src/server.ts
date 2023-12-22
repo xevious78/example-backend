@@ -1,6 +1,7 @@
 import "dotenv/config";
 import fastify from "fastify";
 import cors from "@fastify/cors";
+import { randomUUID } from "node:crypto";
 
 import { post } from "./utils/post.ts";
 import { primerApiUrl, primerHeaders } from "./api/const.ts";
@@ -24,7 +25,7 @@ app.post("/client-session", async (c) => {
 
     /* ✨ Feel free to update this 👇 */
     {
-      orderId: crypto.randomUUID(),
+      orderId: randomUUID(),
 
       order: {
         // Line items for this session
