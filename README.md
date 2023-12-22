@@ -1,4 +1,4 @@
-![Primer Banner](./images/primer-banner.png)
+![Primer Banner](https://github.com/xevious78/example-backend/raw/main/images/primer-banner.png)
 
 # 🦄 Primer Example Backend
 
