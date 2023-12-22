@@ -12,6 +12,7 @@
     "prestart": "npm run build",
     "build": "esbuild src/server.ts --bundle --format=esm --outfile=dist/server.js --packages=external --platform=node --target=esnext"
   },
+  "engines": { "node": "16.x" },
   "dependencies": {
     "@fastify/cors": "^8.5.0",
     "dotenv": "^16.3.1",
