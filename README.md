@@ -24,9 +24,9 @@ _This server uses [Node](https://nodejs.org/) as the runtime and [Fastify](https
 
 _We recommend using Glitch to quickly spin up a new instance of your server for free._
 
-1. First, click on this button to open the project in Glitch and start the server.
+1. First, click on this button to open the project in Glitch and start the server. <br /> _It may take a few minutes to start._
 
-   [![remix With Glitch](https://cdn.glitch.com/2703baf2-b643-4da7-ab91-7ee2a2d00b5b%2Fremix-button-v2.svg?v=1622676640618)](https://glitch.com/edit/#!/import/github/xevious78/example-backend)
+   [![Remix With Glitch](https://cdn.glitch.com/2703baf2-b643-4da7-ab91-7ee2a2d00b5b%2Fremix-button-v2.svg?v=1622676640618)](https://glitch.com/edit/#!/import/github/xevious78/example-backend)
 
 2. On Glitch, open the file `.env`. <br /> Set the environment variable `PRIMER_API_KEY` to your Primer sandbox API key.
 
@@ -36,7 +36,7 @@ _We recommend using Glitch to quickly spin up a new instance of your server for 
 
 ## Run it locally
 
-1. First, make sure [Deno](https://deno.land) is installed on your machine.
+1. First, make sure [Node](https://nodejs.org) is installed on your machine.
 2. Clone this repository:
 
    ```sh
@@ -45,11 +45,17 @@ _We recommend using Glitch to quickly spin up a new instance of your server for 
    cd ./example-backend
    ```
 
-3. Clone the file `.env.example` and call it `.env`. Set the environment variable `PRIMER_API_KEY` to your Primer sandbox API key.
+3. Install the dependencies:
 
-4. Execute the following script on a terminal window:
    ```sh
-   deno task start
+   npm install
+   ```
+
+4. Clone the file `.env.example` and call it `.env`. Set the environment variable `PRIMER_API_KEY` to your Primer sandbox API key.
+
+5. Execute the following script on a terminal window:
+   ```sh
+   npm run start
    ```
 
 # 🤖 Capabilities
