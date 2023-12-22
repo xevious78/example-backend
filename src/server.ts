@@ -1,16 +1,17 @@
-import { Hono } from "hono/mod.ts";
-import { cors } from "hono/middleware.ts";
+import "dotenv/config";
+import fastify from "fastify";
+import cors from "@fastify/cors";
 
-import "std/dotenv/load.ts";
 import { post } from "./utils/post.ts";
 import { primerApiUrl, primerHeaders } from "./api/const.ts";
 
-const app = new Hono();
+const app = fastify();
+await app.register(cors, {
+  origin: true,
+});
 
-app.use("/*", cors());
-
-app.get("/", (c) =>
-  c.text(["Available endpoints:", "", "  POST /client-session"].join("\n"))
+app.get("/", () =>
+  ["Available endpoints:", "", "  POST /client-session"].join("\n")
 );
 
 ///////////////////////////////////////////
@@ -63,7 +64,7 @@ app.post("/client-session", async (c) => {
     primerHeaders
   );
 
-  return c.json(res);
+  return res;
 });
 
 type ClientSession = {
@@ -74,4 +75,13 @@ type ClientSession = {
 // Serve
 ///////////////////////////////////////////
 
-await Deno.serve(app.fetch);
+const port = 3000;
+
+try {
+  await app.listen({ port });
+} catch (err) {
+  app.log.error(err);
+  process.exit(1);
+}
+
+console.log("🚀 Server running on", `http://localhost:${port}`);
