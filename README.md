@@ -1,6 +1,6 @@
 ![Primer Banner](https://github.com/xevious78/example-backend/raw/main/images/primer-banner.png)
 
-# 🦄 Primer Example Backend
+# 💳 Primer Example Backend
 
 This project is a very simple companion backend to the example apps of [Primer](https://primer.io) Universal Checkout:
 
