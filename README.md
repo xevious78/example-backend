@@ -4,7 +4,6 @@
 
 This project is a very simple companion backend to the example apps of [Primer](https://primer.io) Universal Checkout:
 
-- [Example Web apps](#)
 - [Example iOS apps](https://github.com/primer-io/checkout-examples-ios)
 - [Example Android apps](https://github.com/primer-io/checkout-examples-android)
 
