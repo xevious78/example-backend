@@ -20,57 +20,69 @@ app.get("/", () =>
 ///////////////////////////////////////////
 
 app.post("/client-session", async (c) => {
-  const res = await post<ClientSession>(
-    `${primerApiUrl}/client-session`,
+  
+  // ✨ Feel free to update this 👇
+  // Check the API reference here: https://apiref.primer.io/reference/create_client_side_token_client_session_post
+  const requestBody: any = {
+    orderId: randomUUID(),
 
-    // ✨ Feel free to update this 👇
-    // Check the API reference here: https://apiref.primer.io/reference/create_client_side_token_client_session_post
-    {
-      orderId: randomUUID(),
-
-      order: {
-        // Line items for this session
-        // If your checkout does not have line items:
-        //  > Pass a single line item with the total amount!
-        lineItems: [
-          {
-            itemId: "shoes-123",
-            description: "Some nice shoes!",
-            // Amount should be in minor units!
-            amount: 2500,
-            quantity: 1,
-          },
-        ],
-      },
-
-      currencyCode: "GBP",
-
-      // emailAddress and billingAddress are required for 3DS
-      customer: {
-        emailAddress: "test@test.com",
-        mobileNumber: "+6588889999",
-        firstName: "John",
-        lastName: "Smith",
-        billingAddress: {
-          firstName: "John",
-          lastName: "Smith",
-          postalCode: "CB94BQ",
-          addressLine1: "47A",
-          countryCode: "CL",
-          city: "Cambridge",
-          state: "Cambridgeshire",
+    order: {
+      // Line items for this session
+      // If your checkout does not have line items:
+      //  > Pass a single line item with the total amount!
+      lineItems: [
+        {
+          itemId: "shoes-123",
+          description: "Some nice shoes!",
+          // Amount should be in minor units!
+          amount: 2500,
+          quantity: 1
         },
-      },
+      ],
     },
 
+    currencyCode: "GBP",
+    amount: 2000,
+
+    // emailAddress and billingAddress are required for 3DS
+    customer: {
+      emailAddress: "test@test.com",
+      mobileNumber: "+6588889999",
+      firstName: "John",
+      lastName: "Smith",
+      billingAddress: {
+        firstName: "John",
+        lastName: "Smith",
+        postalCode: "CB94BQ",
+        addressLine1: "47A",
+        countryCode: "CL",
+        city: "Cambridge",
+        state: "Cambridgeshire",
+      },
+    },
+  }
+
+  if (process.env.PRIMER_ALLOWED_NETWORKS) {
+    const networks = process.env.PRIMER_ALLOWED_NETWORKS.split(/\s+,\s+/g)
+    requestBody.paymentMethod = { orderedAllowedCardNetworks: networks };
+  }
+
+  const res = await post<IClientSession>(
+    `${primerApiUrl}/client-session`,
+    requestBody,
     primerHeaders
   );
 
   return res;
 });
 
-type ClientSession = {
+interface IClientSessionPaymentMethod {
+  orderedAllowedCardNetworks: string[];
+}
+
+interface IClientSession {
   clientToken: string;
+  paymentMethod: IClientSessionPaymentMethod;
 };
 
 ///////////////////////////////////////////

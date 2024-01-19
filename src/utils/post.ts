@@ -2,7 +2,7 @@ import fetch from "node-fetch";
 
 export async function post<T>(
   url: string,
-  body: Record<string, unknown>,
+  body: any,
   headers?: HeadersInit
 ) {
   const response = await fetch(url, {
@@ -14,7 +14,7 @@ export async function post<T>(
   const json = (await response.json()) as T & { error?: ServerError };
 
   if (json.error)
-    throw new Error(json.error.description, { cause: json.error });
+    throw new Error(json.error.description, { message: json.error });
 
   return json as T;
 }
