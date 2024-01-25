@@ -9,7 +9,9 @@ This project is a very simple companion backend to the example apps of [Primer](
 
 ---
 
-_This server uses [Node](https://nodejs.org/) as the runtime (v16 to be compatible with Glitch) and [Fastify](https://fastify.dev/) as the HTTP server framework._
+_This server uses [Node](https://nodejs.org/) as the runtime and [Fastify](https://fastify.dev/) as the HTTP server framework._
+
+_This project uses Node v16 to be compatible with Glitch but we encourage you to use a more recent version of Node._
 
 # 🚀 Get started
 
